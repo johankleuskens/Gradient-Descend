@@ -15,7 +15,7 @@ X_new_norm = np.array([[0], [2]])
 X_new_norm_b = np.c_[np.ones((2,1)), X_new_norm]
 y_pred_norm = X_new_norm_b.dot(theta_norm)
 
-# Do a gradient descend
+# Do a gradient descent
 eta =0.1
 n_iterations = 1000
 m = 100
@@ -33,8 +33,19 @@ y_pred_grad = X_new_grad_b.dot(theta_grad)
     
 
 # show things
-plt.plot(X,y,"b.")
-plt.plot(X_new_norm, y_pred_norm, "r-")
-plt.plot(X_new_grad, y_pred_grad, "y-")
-plt.axis([0,2,0,15])
+fig = plt.figure()
+fig.subplots_adjust(hspace=0.5)
+
+ax1 = fig.add_subplot(211)
+ax1.set_title('Normal Equation')
+ax1.plot(X,y,"b.")
+ax1.plot(X_new_norm, y_pred_norm, "r-")
+ax1.axis([0,2,0,15])
+
+
+ax2 = fig.add_subplot(212)
+ax2.set_title('Gradient Descent')
+ax2.plot(X,y,"b.")
+ax2.plot(X_new_grad, y_pred_grad, "y-")
+ax2.axis([0,2,0,15])
 plt.show()
